@@ -1,0 +1,10 @@
+http://www.latticesemi.com/Products/DevelopmentBoardsAndKits/iCE40HX8KBreakoutBoard.aspx
+http://www.latticesemi.com/en/Products/DevelopmentBoardsAndKits/iCEstick.aspx
+https://shop.trenz-electronic.de/en/detail/index/sArticle/2581?path=
+https://shop.trenz-electronic.de/en/TE0876-01-IceZero-with-Lattice-ICE40HX
+https://folknologylabs.wordpress.com/2016/08/17/the-lull-before-the-storm/
+https://hackaday.io/project/6636-iced-an-arduino-style-board-with-ice-fpga
+https://hackaday.io/project/7982-cat-board
+https://www.olimex.com/Products/FPGA/iCE40/iCE40HX8K-EVB/open-source-hardware
+
+

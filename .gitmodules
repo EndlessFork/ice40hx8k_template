@@ -1,0 +1,15 @@
+[submodule "icestorm"]
+        path = icestorm
+        url = https://github.com/cliffordwolf/icestorm.git
+[submodule "arachne-pnr"]
+        path = arachne-pnr
+        url = https://github.com/cseed/arachne-pnr.git
+[submodule "yosys"]
+        path = yosys
+        url = https://github.com/cliffordwolf/yosys.git
+[submodule "yodl"]
+        path = yodl
+        url = https://github.com/forflo/yodl.git
+[submodule "RGD2_icestorm_example"]
+	path = RGD2_icestorm_example
+	url = https://github.com/RGD2/icestorm_example
