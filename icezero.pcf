@@ -1,0 +1,134 @@
+
+set_io clk_100mhz 49 // also GBIN5
+
+// XTRA_CLOCKS
+set_io --warn-no-port xtra_clk1 128 // from U2 also GBIN1
+set_io --warn-no-port xtra_clk2 129 // from U3 also GBIN0
+
+set_io --warn-no-port led1 110
+set_io --warn-no-port led2  93 // also GBIN3
+set_io --warn-no-port led3  94 // also GBIN2
+
+// button for CBSE (cold boot select)
+set_io --warn-no-port CBSE0 63 // button with pullop
+set_io --warn-no-port CBSE1 64 // just pullup
+
+// config flash (N25Q064A13ESE40F)
+set_io --warn-no-port cfg_ss 71   // also raspi_pin32, pullup, also raspi_GPIO12
+set_io --warn-no-port cfg_sck 70  // also raspi_pin36, also raspi_GPIO16
+set_io --warn-no-port cfg_so 67   // also raspi_pin33, also raspi_GPIO13
+set_io --warn-no-port cfg_si 68   // also raspi_pin31, also raspi_GPIO6
+// set_io --warn-no-port cfg_done 65  // also raspi_pin29, pullup, also raspi_GPIO5
+// set_io --warn-no-port cfg_rst_1 66  // also raspi_pin37, pullup, also raspi_GPIO26
+
+// raspi interface (see also config flash!)
+// unconnected raspi-pins:
+// 1 (3.3V), 17(3.3V)
+// 7(GPIO4), 11(GPIO17), 12(GPIO18), 13(GPIO27), 16(GPIO23),
+// 35(GPIO19), 38(GPIO20), 40(GPIO21)
+set_io --warn-no-port pi_i2c_sda 115  // raspi_pin3, also raspi_GPIO2_I2C1_SDA
+set_io --warn-no-port pi_i2c_scl 114  // raspi_pin5, also raspi_GPIO3_I2C1_SCL
+set_io --warn-no-port pi_uart_wi 113  // raspi_pin8, also raspi_GPIO14_UART0_TXD
+set_io --warn-no-port pi_uart_ro 112  // raspi_pin10, also raspi_GPIO15_UART0_RXD
+set_io --warn-no-port pi_gpio_0 88  // raspi_pin22, also raspi_GPIO25
+set_io --warn-no-port pi_gpio_1  99  // raspi_pin18, also raspi_GPIO24
+set_io --warn-no-port pi_gpio_2 101  // raspi_pin15, also raspi_GPIO22
+set_io --warn-no-port pi_spi_mosi 90  // raspi_pin19, also raspi_GPIO10_SPI0_MOSI
+set_io --warn-no-port pi_spi_miso 87  // raspi_pin21, also raspi_GPIO9_SPI0_MISO
+set_io --warn-no-port pi_spi_sck 79  // raspi_pin23, also raspi_GPIO11_SPI0_SCLK
+set_io --warn-no-port pi_spi_ce0 85  // raspi_pin24, also raspi_GPIO8_SPI0_CE0_N
+set_io --warn-no-port pi_spi_ce1 78  // raspi_pin26, also raspi_GPIO7_SPI0_CE1_N
+set_io --warn-no-port pi_id_0 73  // raspi_pin27, also raspi_ID_SD
+set_io --warn-no-port pi_id_1 74  // raspi_pin28, also raspi_ID_SC
+
+// ftdi interface (pin 1 is GND(BLK), pin 3 is +5V(RED))
+set_io --warn-no-port ftdi_wo 119  // pin 2 (BRN) FTDI_CTS (->ftdi)
+set_io --warn-no-port ftdi_wi 122  // pin 4 (ORN) FTDI_TXD (ftdi->)
+set_io --warn-no-port ftdi_ro 124  // pin 5 (YLW) FTDI_RXD (->ftdi)
+set_io --warn-no-port ftdi_ri 125  // pin 6 (GRN) FTDI_RTS (ftdi->)
+
+// XTRA interface (6 pins, pin6 is GND)
+set_io --warn-no-port xtra_a0 120  // pin 1
+set_io --warn-no-port xtra_a3 117  // pin 2
+set_io --warn-no-port xtra_a1 121  // pin 3
+set_io --warn-no-port xtra_a4 118  // pin 4
+set_io --warn-no-port xtra_a2 116  // pin 5
+
+// SRAM interface
+set_io --warn-no-port sram_ce   24
+set_io --warn-no-port sram_we   11
+set_io --warn-no-port sram_oe   76
+set_io --warn-no-port sram_lb   81
+set_io --warn-no-port sram_ub   75
+set_io --warn-no-port sram_a0   34
+set_io --warn-no-port sram_a1   33
+set_io --warn-no-port sram_a2   32
+set_io --warn-no-port sram_a3   31
+set_io --warn-no-port sram_a4   25
+set_io --warn-no-port sram_a5   10
+set_io --warn-no-port sram_a6    9
+set_io --warn-no-port sram_a7    4
+set_io --warn-no-port sram_a8    3
+set_io --warn-no-port sram_a9    2
+set_io --warn-no-port sram_a10 107
+set_io --warn-no-port sram_a11 106
+set_io --warn-no-port sram_a12 105
+set_io --warn-no-port sram_a13 104
+set_io --warn-no-port sram_a14 102
+set_io --warn-no-port sram_a15  62
+set_io --warn-no-port sram_a16  60
+set_io --warn-no-port sram_a17  61
+set_io --warn-no-port sram_a18  98
+set_io --warn-no-port sram_d0   23
+set_io --warn-no-port sram_d1   22
+set_io --warn-no-port sram_d2   19
+set_io --warn-no-port sram_d3   18
+set_io --warn-no-port sram_d4   17
+set_io --warn-no-port sram_d5   16
+set_io --warn-no-port sram_d6   15
+set_io --warn-no-port sram_d7   12
+set_io --warn-no-port sram_d8   97
+set_io --warn-no-port sram_d9   96
+set_io --warn-no-port sram_d10  95
+set_io --warn-no-port sram_d11  91
+set_io --warn-no-port sram_d12  84
+set_io --warn-no-port sram_d13  82
+set_io --warn-no-port sram_d14  83
+set_io --warn-no-port sram_d15  80
+
+// GPIO/PMOD
+// PMODx_8+PMODx_9 are GND, PMODx_10+PMODx_11 are +3.3V
+// DIGILENT_PMODx_5+DIGILENT_PMODx_11 are GND
+// DIGILENT_PMODx_6+DIGILENT_PMODx_12 are +3.3V
+set_io --warn-no-port gpio_0  141 // also PMOD1_0 (digilent: PMOD1_7)
+set_io --warn-no-port gpio_1  139 // also PMOD1_1 (digilent: PMOD1_1)
+set_io --warn-no-port gpio_2  138 // also PMOD1_2 (digilent: PMOD1_8)
+set_io --warn-no-port gpio_3  137 // also PMOD1_3 (digilent: PMOD1_2)
+set_io --warn-no-port gpio_4  136 // also PMOD1_4 (digilent: PMOD1_9)
+set_io --warn-no-port gpio_5  135 // also PMOD1_5 (digilent: PMOD1_3)
+set_io --warn-no-port gpio_6  134 // also PMOD1_6 (digilent: PMOD1_10)
+set_io --warn-no-port gpio_7  130 // also PMOD1_7 (digilent: PMOD1_4)
+set_io --warn-no-port gpio_8   55 // also PMOD2_0 (digilent: PMOD2_7)
+set_io --warn-no-port gpio_9   56 // also PMOD2_1 (digilent: PMOD2_1)
+set_io --warn-no-port gpio_10  47 // also PMOD2_2 (digilent: PMOD2_8)
+set_io --warn-no-port gpio_11  48 // also PMOD2_3 (digilent: PMOD2_2)
+set_io --warn-no-port gpio_12  44 // also PMOD2_4 (digilent: PMOD2_9)
+set_io --warn-no-port gpio_13  45 // also PMOD2_5 (digilent: PMOD2_3)
+set_io --warn-no-port gpio_14  42 // also PMOD2_6 (digilent: PMOD2_10)
+set_io --warn-no-port gpio_15  43 // also PMOD2_7 (digilent: PMOD2_4)
+set_io --warn-no-port gpio_16  41 // also PMOD3_0 (digilent: PMOD3_7)
+set_io --warn-no-port gpio_17  39 // also PMOD3_1 (digilent: PMOD3_1)
+set_io --warn-no-port gpio_18  38 // also PMOD3_2 (digilent: PMOD3_8)
+set_io --warn-no-port gpio_19  37 // also PMOD3_3 (digilent: PMOD3_2)
+set_io --warn-no-port gpio_20   1 // also PMOD3_4 (digilent: PMOD3_9)
+set_io --warn-no-port gpio_21 144 // also PMOD3_5 (digilent: PMOD3_3)
+set_io --warn-no-port gpio_22 143 // also PMOD3_6 (digilent: PMOD3_10)
+set_io --warn-no-port gpio_23 142 // also PMOD3_7 (digilent: PMOD3_4)
+set_io --warn-no-port gpio_24  21 // also PMOD4_0 (digilent: PMOD4_7) also GBIN6
+set_io --warn-no-port gpio_25  20 // also PMOD4_1 (digilent: PMOD4_1) also GBIN7
+set_io --warn-no-port gpio_26   8 // also PMOD4_2 (digilent: PMOD4_8) also differential 4B
+set_io --warn-no-port gpio_27   7 // also PMOD4_3 (digilent: PMOD4_2) also differential 4A
+set_io --warn-no-port gpio_28  26 // also PMOD4_4 (digilent: PMOD4_9)
+set_io --warn-no-port gpio_29  29 // also PMOD4_5 (digilent: PMOD4_3) also differential 23B
+set_io --warn-no-port gpio_30  28 // also PMOD4_6 (digilent: PMOD4_10) also differential 23A
+set_io --warn-no-port gpio_31  52 // also PMOD4_7 (digilent: PMOD4_4) also GBIN4

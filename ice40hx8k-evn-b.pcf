@@ -1,20 +1,33 @@
 set_io clk_12mhz J3
 
-set_io LED1 B5
-set_io LED2 B4
-set_io LED3 A2
-set_io LED4 A1
-set_io LED5 C5
-set_io LED6 C4
-set_io LED7 B3
-set_io LED8 C3
+set_io LED[1] B5
+set_io LED[2] B4
+set_io LED[3] A2
+set_io LED[4] A1
+set_io LED[5] C5
+set_io LED[6] C4
+set_io LED[7] B3
+set_io LED[8] C3
 
 
-set_io sel R15
+set_io --warn-no-port sel R1
 
 # Bank 1 (J2)
-set_io --warn-no-port pin_c16 C16
-set_io --warn-no-port pin_d16 D16
-set_io --warn-no-port pin_b16 B16
-set_io --warn-no-port pin_d14 D14
+set_io --warn-no-port vga_r[3] K14
+set_io --warn-no-port vga_r[2] G14
+set_io --warn-no-port vga_r[1] J15
+set_io --warn-no-port vga_r[0] H16
+set_io --warn-no-port vga_g[3] N16
+set_io --warn-no-port vga_g[2] M15
+set_io --warn-no-port vga_g[1] M16
+set_io --warn-no-port vga_g[0] K15
+set_io --warn-no-port vga_b[3] J14
+set_io --warn-no-port vga_b[2] F14
+set_io --warn-no-port vga_b[1] H14
+set_io --warn-no-port vga_b[0] G15
+set_io --warn-no-port vga_hs K16
+set_io --warn-no-port vga_vs L16
 
+set_io --warn-no-port dbg[2] C16 
+set_io --warn-no-port dbg[1] D16 
+set_io --warn-no-port dbg[0] E16 

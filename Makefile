@@ -1,23 +1,43 @@
-.PHONY: prepare upload clean
+.PHONY: prepare upload clean tb
 
 PROJECT = top
-SRCS = $(filter _tb.v, $(wildcard *.v))
+PCF = ice40hx8k-evn-b.pcf
+SRCS = $(filter-out $(PROJECT).v, $(filter-out %_tb.v, $(wildcard *.v)))
+TBS = $(wildcard *_tb.v)
+VCDS = $(TBS:_tb.v=.vcd)
 
+$(display $(SRCS))
 
 upload: $(PROJECT).bin
+	sudo iceprog $(PROJECT).bin
+sram: $(PROJECT).bin
 	sudo iceprog -S $(PROJECT).bin
+	icetime -p $(PCF) -P ct256 -d hx8k -t $(PROJECT).txt
 
 $(PROJECT).bin: $(PROJECT).txt
 	icepack $(PROJECT).txt $(PROJECT).bin
 
 $(PROJECT).txt: $(PROJECT).blif
-	arachne-pnr -d 8k -p ice40hx8k-evn-b.pcf -o $(PROJECT).txt $(PROJECT).blif
+	arachne-pnr -d 8k -p $(PCF) -o $(PROJECT).txt $(PROJECT).blif
 
 $(PROJECT).blif: $(PROJECT).v $(SRCS)
+	echo $(SRCS) $(PROJECT).v
 	yosys -p "read_verilog $(SRCS) $(PROJECT).v; synth_ice40 -blif $(PROJECT).blif"
 
 clean:
-	-rm -f $(PROJECT).bin $(PROJECT).txt $(PROJECT).blif
+	-rm -f $(PROJECT).bin $(PROJECT).txt $(PROJECT).blif $(VCDS) *.vvp *.vhdl
+
+tb:	$(TBS) $(SRCS) $(VCDS)
+
+%_tb.vvp: %_tb.v %.v
+	# $@ is %_tb.aout
+	# $? is %_tb.v
+	iverilog -o $@ $?
+
+%.vcd: %_tb.vvp
+	vvp $? -fst && gtkwave $@
+%.vhdl: %.v
+	iverilog -o $@ $? -t vhdl
 
 prepare:
 	git submodule init
