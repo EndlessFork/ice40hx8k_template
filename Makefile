@@ -1,4 +1,4 @@
-.PHONY: prepare upload clean tb
+.PHONY: prepare upload clean tb 8k sim
 
 PROJECT = top
 PCF = ice40hx8k-evn-b.pcf
@@ -49,3 +49,23 @@ prepare:
 	cd yodl/vhdlpp;make -j9;sudo make install;cd -
 	sudo echo 'ACTION=="add", ATTR{idVendor}=="0403", ATTR{idProduct}=="6010", MODE:="666"' >/etc/udev/rules.d/53-lattice-ftdi.rules
 
+
+8k: sim upload
+
+sim: example.v example_tb.v
+	iverilog -o example_tb example.v example_tb.v
+	./example_tb
+	gtkwave example_tb.vcd
+
+
+upload: example.bin
+	sudo iceprog example.bin && rm example.bin
+
+example.bin: example.txt
+	icepack example.txt example.bin && rm example.txt
+
+example.txt: example.blif
+	arachne-pnr -d 8k -p example-8k.pcf -o example.txt example.blif && rm example.blif
+
+example.blif: example.v
+	yosys -p "read_verilog example.v; synth_ice40 -blif example.blif"
